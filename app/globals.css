@@ -23,11 +23,39 @@ body {
   background: var(--background);
   font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
+  /* Mantivemos o gradiente original como fallback */
   background-image: radial-gradient(at 50% 0%, rgba(255,255,255,0.8) 0%, transparent 70%);
   min-height: 100vh;
+  overflow-x: hidden; /* Importante para a animação não criar scroll lateral */
 }
 
 /* Scrollbar elegante */
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: #65848a; border-radius: 4px; }
+
+
+/* --- Animação Aurora (NOVO) --- */
+/* Cria um movimento suave e contínuo, como um fluido */
+@keyframes aurora-flow {
+  0% { transform: rotate(0deg) scale(1); }
+  33% { transform: rotate(120deg) scale(1.2); }
+  66% { transform: rotate(240deg) scale(0.9); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+.aurora-gradient {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: 
+    radial-gradient(circle at 50% 50%, rgba(124, 188, 196, 0.4), transparent 60%), /* brand-main convertida p/ RGB */
+    radial-gradient(circle at 80% 20%, rgba(162, 207, 210, 0.35), transparent 50%), /* brand-light convertida p/ RGB */
+    radial-gradient(circle at 20% 80%, rgba(101, 132, 138, 0.25), transparent 50%); /* brand-dark convertida p/ RGB */
+  filter: blur(80px); /* O "blur" alto cria o efeito de fumaça/aurora */
+  animation: aurora-flow 25s linear infinite;
+  z-index: 0;
+  pointer-events: none;
+}

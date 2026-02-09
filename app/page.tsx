@@ -1,39 +1,46 @@
 import { EfficiencyForm } from './components/efficiency-form'
-import { ParticlesBackground } from './components/particles-background'
-import { Star } from 'lucide-react'
+import { Heart } from 'lucide-react'
 
 export default function Home() {
   return (
-    // Removemos a cor de fundo escura e a imagem
-    <main className="min-h-screen relative flex items-center justify-center p-4 overflow-hidden">
+    <main className="min-h-screen relative flex items-center justify-center p-4 overflow-hidden bg-slate-50">
+      
+      {/* --- AQUI ESTÁ O SEGREDO DO FUNDO VIVO --- */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+          {/* 1. Chamamos a classe .aurora-gradient que definimos no CSS */}
+          <div className="aurora-gradient" />
+          
+          {/* 2. Camada de Vidro (Para o texto ficar legível e elegante) */}
+          <div className="absolute inset-0 bg-white/30 backdrop-blur-[3px]" />
+      </div>
 
-      {/* 1. O Novo Fundo com as Cores da Empresa */}
-      <ParticlesBackground />
+      {/* --- CONTEÚDO PRINCIPAL (Fica na frente com z-10) --- */}
+      <div className="relative z-10 w-full max-w-2xl mx-auto flex flex-col items-center gap-8 py-8">
 
-       {/* 2. Conteúdo Principal */}
-      <div className="relative z-10 w-full max-w-xl mx-auto flex flex-col items-center gap-6">
-
-        {/* Cabeçalho - Ajustado para cores escuras (já que o fundo agora é claro) */}
-        <div className="text-center space-y-4 px-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-brand-main/20 text-brand-dark rounded-full text-xs font-bold border border-brand-main/30 backdrop-blur-md">
-            <Star className="w-3 h-3 text-brand-main animate-pulse" fill="currentColor" />
-            Diagnóstico Interno
+        {/* Cabeçalho Emocional */}
+        <div className="text-center space-y-6 px-4 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+          
+          {/* Badge de Propósito */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/60 text-brand-dark rounded-full text-sm font-semibold border border-white/50 backdrop-blur-md shadow-sm transition-transform hover:scale-105 cursor-default">
+            <Heart className="w-4 h-4 text-[#ec4899] fill-[#ec4899] animate-pulse" />
+            <span>Dedicação que inspira</span>
           </div>
 
-          {/* Título usando a cor escura da marca */}
-          <h1 className="text-3xl md:text-5xl font-bold leading-tight text-brand-dark">
-            Sua visão <span className="text-brand-main">molda</span><br/> o nosso futuro.
+          {/* Título e Subtítulo */}
+          <h1 className="text-4xl md:text-6xl font-bold leading-tight text-[#2f3e46] tracking-tight drop-shadow-sm">
+            Cuidando de quem <br/>
+            <span className="text-brand-main bg-clip-text text-transparent bg-gradient-to-r from-brand-main to-brand-dark">
+              constrói
+            </span> o nosso futuro.
           </h1>
 
-          {/* Texto secundário usando o cinza médio da marca */}
-          <p className="text-brand-neutral text-sm font-medium max-w-md mx-auto">
-             Responda em menos de 3 minutos e ajude a eliminar a burocracia do dia a dia.
+          <p className="text-slate-600 font-medium text-lg md:text-xl leading-relaxed max-w-xl mx-auto drop-shadow-sm">
+            Obrigado pelo seu empenho diário. Queremos ouvir você para tornar a rotina mais leve, simples e humana.
           </p>
         </div>
 
-        {/* Formulário de Vidro - Borda mais visível para destacar no fundo claro */}
-        <div className="w-full bg-white/80 backdrop-blur-xl rounded-2xl shadow-2xl border border-brand-light/50 overflow-hidden relative">
-           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-main to-brand-dark" />
+        {/* Formulário com Efeito de Vidro */}
+        <div className="w-full bg-white/60 backdrop-blur-xl rounded-3xl shadow-[0_20px_40px_rgb(0,0,0,0.08)] border border-white/40 p-1 transform transition-all hover:shadow-[0_25px_50px_rgb(0,0,0,0.1)]">
            <EfficiencyForm />
         </div>
 
